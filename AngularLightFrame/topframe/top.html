@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="app">
+
+<head>
+    <title></title>
+    <!--angular-->
+    <script src="angular.min.js"></script>
+    <!--jquery-->
+    <script src="jquery-1.9.1.min.js"></script>
+    <!--bootstrap-->
+    <script src="bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap-theme.min.css">
+    <!--smart table-->
+    <script src="smart-table.js"></script>
+    <!--underscore-->
+    <script src="underscore.min.js"></script>
+    <script src="controller.js"></script>
+</head>
+<body>
+    <div ng-controller="MyController" ng-init="initialize()">
+        <div class="table-container">
+            <table st-table="collection"  class="table table-bordered table-striped">
+                {{displayed.length}}
+                <thead>
+                    <tr>
+                        <th>first name</th>
+                        <th>last name</th>
+                        <th>birth date</th>
+                        <th>balance</th>
+                        <th>email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="row in collection">
+                        <td>{{row.id}}</td>
+                        <td>{{row.firstName.name}}</td>
+                        <td colspan="{{row.combine}}">{{row.lastName.name | uppercase}}</td>
+                        <td ng-show="row.combine != 2">{{row.nationality.name}}</td>
+                        <td>
+                            {{row.education.name}}
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot></tfoot>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
